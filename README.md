@@ -2,17 +2,21 @@
 
 
 ## 13-03-2024
+- ~~namespaces~~
 - ~~classes~~
 - ~~property accessibility~~
 - ~~base classes~~ 
 
+# 20-03-2024
+- ~~interfaces~~
+- ~~pass by reference vs pass by value~~
+- ~~constructors and serialization~~
+  - ~~example of logic inside constructor that gets executed upon deserialization~~
+- ~~delegates~~
+- ~~extension methods~~
+- ~~LINQ~~
+
 ## upcoming
-- interfaces
-- pass by reference vs pass by value
-- constructors and serialization
-  - example of logic inside constructor that gets executed upon deserialization
-- extension methods
-- LINQ
 - unit tests
   - example of DateTime.Now
 - define a domain!
