@@ -11,6 +11,7 @@
 - pass by reference vs pass by value
 - constructors and serialization
   - example of logic inside constructor that gets executed upon deserialization
+- delegates
 - extension methods
 - LINQ
 - unit tests
