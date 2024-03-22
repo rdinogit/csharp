@@ -16,9 +16,12 @@
 - ~~extension methods~~
 - ~~LINQ~~
 
+## 22-03-2024
+- ~~unit tests~~
+  - ~~example of DateTime.Now~~
+
+
 ## upcoming
-- unit tests
-  - example of DateTime.Now
 - define a domain!
 - ASP.NET core
   - dependency injection
