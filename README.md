@@ -20,7 +20,6 @@
 - ~~unit tests~~
   - ~~example of DateTime.Now~~
 
-
 ## upcoming
 - define a domain!
 - ASP.NET core
