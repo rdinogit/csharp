@@ -20,19 +20,22 @@
 - ~~unit tests~~
   - ~~example of DateTime.Now~~
 
-## upcoming
-- define a domain!
+## 27-03-2024
+- ~~define a domain!~~
 - ASP.NET core
-  - dependency injection
-    - service lifetimes
-  - routing
+  - ~~dependency injection~~
+    - ~~service lifetimes~~
+  - ~~routing~~
+  - 
+## upcoming
+- ASP.NET core
+  - swagger
   - configuration
-  - middleware (SudoASP `app.UseSecurityHeaders()` example)
+  - versioning
   - authorization (make use of sudoDDD to setup a provider)
+  - middleware (SudoASP `app.UseSecurityHeaders()` example)
   - http clients
   - ? background services
-  - swagger
-  - versioning
 - EF Core
   - how does the ORM work
   - data modeling

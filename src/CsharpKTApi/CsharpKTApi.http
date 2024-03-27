@@ -1,0 +1,23 @@
+@CsharpKTApi_HostAddress = http://localhost:5215
+
+GET {{CsharpKTApi_HostAddress}}/api/weatherforecast/current-weather
+Accept: application/json
+
+###
+GET {{CsharpKTApi_HostAddress}}/api/echo/echo?input=something
+
+###
+POST {{CsharpKTApi_HostAddress}}/api/echo/echo-object
+Content-Type: application/json
+
+{
+    "Value": "somethingElse"
+}
+
+###
+POST {{CsharpKTApi_HostAddress}}/api/developers
+Content-Type: application/json
+
+{
+    "Name": "Ruben"
+}
