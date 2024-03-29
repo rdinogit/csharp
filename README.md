@@ -26,15 +26,18 @@
   - ~~dependency injection~~
     - ~~service lifetimes~~
   - ~~routing~~
-  - 
+
+## 29-03-2024
+- ASP.NET core
+  - ~~configuration~~
+  - ~~swagger~~
+
 ## upcoming
 - ASP.NET core
-  - swagger
-  - configuration
   - versioning
-  - authorization (make use of sudoDDD to setup a provider)
-  - middleware (SudoASP `app.UseSecurityHeaders()` example)
-  - http clients
+  - authorization
+  - ? middleware
+  - ? http clients
   - ? background services
 - EF Core
   - how does the ORM work

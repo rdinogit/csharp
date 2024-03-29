@@ -1,13 +1,26 @@
 using CsharpKTApi.Mappers;
+using CsharpKTApi.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Example on how to "see" what each section contains, helpful for debug!
+//var teamSettingsSection = builder.Configuration.GetSection("TeamTypology");
+//var teamSettingsSection2 = builder.Configuration.GetSection("TeamTypology:Default");
+
+//Example on how to setup configuration "manually" or how to have configuration available during services setup
+//var teamSettings = new TeamTypologySettings();
+//builder.Configuration.Bind("TeamTypology", teamSettings);
+//builder.Services.AddSingleton(teamSettings);
+
+// Example on how to setup configuration using the IOptions/IOptionsSnapshot interface
+// You can read more about it here - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
+builder.Services.Configure<TeamTypologySettings>(builder.Configuration.GetSection("TeamTypology"));
 
 builder.Services.AddScoped<IDeveloperMapper, DeveloperMapper>();
 
