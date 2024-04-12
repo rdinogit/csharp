@@ -83,7 +83,7 @@ namespace CsharpKT.Tests
             var productionDate = 1.January(2000);
 
             var dateTimeProvider = Substitute.For<IDateTimeProvider>();
-            dateTimeProvider.Now.Returns(productionDate);
+            dateTimeProvider.UtcNow.Returns(productionDate);
 
             // Act
             var result = Car.CreateNewCar(CarColor.Red, "irrelevant", dateTimeProvider);

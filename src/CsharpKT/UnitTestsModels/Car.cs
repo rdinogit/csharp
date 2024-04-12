@@ -43,7 +43,7 @@
                 EngineType = EngineType,
                 Color = color,
                 Passengers = [],
-                ProductionDate = productionTime.Now,
+                ProductionDate = productionTime.UtcNow,
             };
         }
 
