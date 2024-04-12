@@ -1,14 +1,16 @@
-﻿using CsharpKT.ApiModels;
+﻿using Asp.Versioning;
+using CsharpKT.ApiModels;
 using CsharpKTApi.Mappers;
-using CsharpKTApi.Models;
+using CsharpKTApi.Models.v1;
 using CsharpKTApi.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Net;
 
-namespace CsharpKTApi.Controllers
+namespace CsharpKTApi.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [ApiVersion(1.0)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class DevelopersController : ControllerBase
     {
@@ -23,7 +25,7 @@ namespace CsharpKTApi.Controllers
             _teamSettings = teamSettings.Value;
         }
 
-        [HttpPost("create", Name = "CreateDeveloper")]
+        [HttpPost("create")]
         [ProducesResponseType(typeof(Developer), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public IActionResult PostDeveloper(DeveloperRequestModel request)

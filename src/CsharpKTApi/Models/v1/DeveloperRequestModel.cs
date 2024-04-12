@@ -1,4 +1,4 @@
-﻿namespace CsharpKTApi.Models
+﻿namespace CsharpKTApi.Models.v1
 {
     public class DeveloperRequestModel
     {

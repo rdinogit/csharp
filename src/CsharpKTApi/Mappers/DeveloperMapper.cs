@@ -1,5 +1,5 @@
 ﻿using CsharpKT.ApiModels;
-using CsharpKTApi.Models;
+using CsharpKTApi.Models.v1;
 
 namespace CsharpKTApi.Mappers
 {
