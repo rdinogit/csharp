@@ -15,7 +15,15 @@ Content-Type: application/json
 }
 
 ###
-POST {{CsharpKTApi_HostAddress}}/api/developers
+POST {{CsharpKTApi_HostAddress}}/api/v1/developers/create
+Content-Type: application/json
+
+{
+    "Name": "Ruben"
+}
+
+###
+POST {{CsharpKTApi_HostAddress}}/api/v2/developers/create
 Content-Type: application/json
 
 {

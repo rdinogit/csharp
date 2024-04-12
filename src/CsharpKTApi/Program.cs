@@ -1,28 +1,20 @@
-using CsharpKTApi.Mappers;
-using CsharpKTApi.Settings;
+using CsharpKTApi;
+using CsharpKTApi.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDevelopmentTeam(builder.Configuration);
+builder.Services.AddKtApiVersioning();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Example on how to "see" what each section contains, helpful for debug!
-//var teamSettingsSection = builder.Configuration.GetSection("TeamTypology");
-//var teamSettingsSection2 = builder.Configuration.GetSection("TeamTypology:Default");
-
-//Example on how to setup configuration "manually" or how to have configuration available during services setup
-//var teamSettings = new TeamTypologySettings();
-//builder.Configuration.Bind("TeamTypology", teamSettings);
-//builder.Services.AddSingleton(teamSettings);
-
-// Example on how to setup configuration using the IOptions/IOptionsSnapshot interface
-// You can read more about it here - https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0
-builder.Services.Configure<TeamTypologySettings>(builder.Configuration.GetSection("TeamTypology"));
-
-builder.Services.AddScoped<IDeveloperMapper, DeveloperMapper>();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Api versioning Swagger integration https://github.com/dotnet/aspnet-api-versioning/wiki/Swashbuckle-Integration
+builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+builder.Services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
 
 var app = builder.Build();
 
@@ -30,7 +22,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        foreach (var description in app.DescribeApiVersions())
+        {
+            options.SwaggerEndpoint(
+                $"/swagger/{description.GroupName}/swagger.json",
+                description.GroupName);
+        }
+    });
 }
 
 app.UseHttpsRedirection();
