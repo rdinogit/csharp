@@ -32,10 +32,16 @@
   - ~~configuration~~
   - ~~swagger~~
 
+## 05-04-2024
+- ASP.NET core
+  - ~~versioning~~
+
+## 12-04-2024
+- ASP.NET core
+  - ~~authorization~~
+
 ## upcoming
 - ASP.NET core
-  - versioning
-  - authorization
   - ? middleware
   - ? http clients
   - ? background services
