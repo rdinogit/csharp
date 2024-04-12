@@ -1,4 +1,5 @@
 using CsharpKTApi;
+using CsharpKTApi.Providers;
 using CsharpKTApi.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +8,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDevelopmentTeam(builder.Configuration);
 builder.Services.AddKtApiVersioning();
 
+builder.Services.Configure<JwtTokenSettings>(builder.Configuration.GetSection("JwtTokenSettings"));
+builder.Services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+builder.Services.AddScoped<IJwtTokenProvider, JwtTokenProvider>();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddAuthentication()
+    .AddJwtBearer();
+
+builder.Services.ConfigureOptions<ConfigureJwtBearerOptions>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 // Api versioning Swagger integration https://github.com/dotnet/aspnet-api-versioning/wiki/Swashbuckle-Integration

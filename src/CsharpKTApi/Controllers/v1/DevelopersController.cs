@@ -3,12 +3,14 @@ using CsharpKT.ApiModels;
 using CsharpKTApi.Mappers;
 using CsharpKTApi.Models.v1;
 using CsharpKTApi.Settings;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Net;
 
 namespace CsharpKTApi.Controllers.v1
 {
+    [Authorize]
     [ApiVersion(1.0)]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
