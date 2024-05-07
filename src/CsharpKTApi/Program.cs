@@ -1,4 +1,5 @@
 using CsharpKTApi;
+using CsharpKTApi.Persistence;
 using CsharpKTApi.Providers;
 using CsharpKTApi.Swagger;
 
@@ -11,6 +12,8 @@ builder.Services.AddKtApiVersioning();
 builder.Services.Configure<JwtTokenSettings>(builder.Configuration.GetSection("JwtTokenSettings"));
 builder.Services.AddScoped<IDateTimeProvider, DateTimeProvider>();
 builder.Services.AddScoped<IJwtTokenProvider, JwtTokenProvider>();
+
+builder.Services.AddSqlite<CsharpDbContext>($"Data Source=C:\\Users\\rcber\\source\\KT\\csharp\\src\\CsharpKTApi\\Persistence\\database\\csharp.db");
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
