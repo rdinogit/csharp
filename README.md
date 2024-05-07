@@ -40,15 +40,18 @@
 - ASP.NET core
   - ~~authorization~~
 
+## 03-05-2024
+- EF Core
+  - ~~how does the ORM work~~
+  - ~~what is a unit of work~~
+  - ~~setup DI~~
+  - ~~migrations~~
+
 ## upcoming
 - ASP.NET core
   - ? middleware
   - ? http clients
   - ? background services
 - EF Core
-  - how does the ORM work
   - data modeling
   - configure entities
-  - setup DI
-  - what is a unit of work
-  - migrations
