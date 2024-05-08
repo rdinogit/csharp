@@ -10,6 +10,5 @@ namespace CsharpKTApi.Persistence
         }
 
         public DbSet<Developer> Developers { get; set; }
-
     }
 }

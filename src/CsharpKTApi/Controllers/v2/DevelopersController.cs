@@ -2,6 +2,7 @@
 using CsharpKT.ApiModels;
 using CsharpKTApi.Models.v2;
 using CsharpKTApi.Persistence;
+using CsharpKTApi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -14,10 +15,14 @@ namespace CsharpKTApi.Controllers.v2
     public class DevelopersController : ControllerBase
     {
         private readonly CsharpDbContext _context;
+        private readonly IDeveloperRepository _developerRepository;
 
-        public DevelopersController(CsharpDbContext context)
+        public DevelopersController(
+            CsharpDbContext context,
+            IDeveloperRepository developerRepository)
         {
             _context = context;
+            _developerRepository = developerRepository;
         }
 
         [HttpPost]
@@ -26,8 +31,13 @@ namespace CsharpKTApi.Controllers.v2
         public async Task<IActionResult> PostDeveloper(DeveloperRequestModel request)
         {
             var developer = Developer.Create(Guid.NewGuid().ToString(), request.Name);
-            await _context.Developers.AddAsync(developer);
-            await _context.SaveChangesAsync();
+
+            await _developerRepository.Add(developer);
+
+            //await _context.Developers.AddAsync(developer);
+
+            //await _context.SaveChangesAsync();
+
             return Accepted();
         }
 
@@ -36,7 +46,10 @@ namespace CsharpKTApi.Controllers.v2
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetDeveloper(string id)
         {
-            var developer = _context.Developers.FirstOrDefault(x => x.Id == id);
+            var developer = _context.Developers
+                .AsNoTracking()
+                .FirstOrDefault(x => x.Id == id);
+
             return Ok(developer);
         }
 
@@ -46,9 +59,9 @@ namespace CsharpKTApi.Controllers.v2
         public async Task<IActionResult> PutDeveloper(string id, string name)
         {
             var developer = _context.Developers.FirstOrDefault(x => x.Id == id);
-            
+
             developer.UpdateName(name);
-            
+
             await _context.SaveChangesAsync();
 
             return Accepted();
